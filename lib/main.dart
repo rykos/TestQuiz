@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
 
 class MyApp extends StatelessWidget {
@@ -48,40 +50,55 @@ class QuizPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          new Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            QuizQuestion(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
-                  child: Text('data'),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                ),
-                FlatButton(
-                  child: Text('data'),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                ),
-                FlatButton(
-                  child: Text('data'),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                ),
-                FlatButton(
-                  child: Text('data'),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                ),
+                QuizAnswerButton(),
+                QuizAnswerButton(),
               ],
             ),
-          )
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                QuizAnswerButton(),
+                QuizAnswerButton(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class QuizQuestion extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(25),
+      child: Text('Question text?'),
+    );
+  }
+}
+
+class QuizAnswerButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      child: ButtonTheme(
+        height: 150,
+        minWidth: 150,
+        child: FlatButton(
+          child: Text('data'),
+          onPressed: () {},
+          color: Colors.blueAccent,
+        ),
       ),
     );
   }
