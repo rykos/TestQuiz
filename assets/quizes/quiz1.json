@@ -1,0 +1,13 @@
+{
+    "question": "Select 1",
+    "correctAnswers": [
+        "1"
+    ],
+    "incorrectAnswers": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+    ]
+}
